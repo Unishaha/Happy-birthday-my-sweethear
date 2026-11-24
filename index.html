@@ -1,0 +1,1112 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday My Bachu 💗</title>
+
+<style>
+:root {
+  --bg:#10091f;
+  --panel:rgba(255,255,255,.09);
+  --text:#fff;
+  --pink:#ff72bd;
+  --purple:#a879ff;
+  --muted:#d8cce9;
+}
+* {box-sizing:border-box;margin:0;padding:0}
+html {scroll-behavior:smooth}
+body {
+  min-height:100vh;
+  color:var(--text);
+  font-family:Segoe UI,Arial,sans-serif;
+  background:
+    radial-gradient(circle at 15% 10%,#48205d 0,transparent 35%),
+    radial-gradient(circle at 85% 85%,#321653 0,transparent 35%),
+    var(--bg);
+  overflow-x:hidden;
+}
+button,input,textarea,select {font:inherit}
+button {
+  border:0;cursor:pointer;color:white;
+  background:linear-gradient(120deg,var(--pink),var(--purple));
+  padding:11px 17px;border-radius:12px;
+  transition:.2s;
+}
+button:hover {transform:translateY(-2px);filter:brightness(1.12)}
+input,textarea,select {
+  width:100%;padding:12px;margin:7px 0;
+  color:white;background:#211532;
+  border:1px solid #785a91;border-radius:10px;
+}
+textarea {min-height:100px;resize:vertical}
+input::placeholder,textarea::placeholder {color:#c1b2d1}
+#particleCanvas {
+  position:fixed;inset:0;width:100%;height:100%;
+  pointer-events:none;z-index:0;
+}
+header,.app,.music-float {position:relative;z-index:1}
+header {
+  text-align:center;padding:42px 18px 25px;
+}
+header h1 {
+  font-size:clamp(2rem,6vw,4rem);
+  background:linear-gradient(90deg,#fff,#ff83c8,#c39aff);
+  color:transparent;background-clip:text;
+  text-shadow:0 0 30px #d45dff44;
+}
+header p {color:var(--muted);margin-top:10px}
+.app {max-width:1200px;margin:auto;padding:12px 18px 60px}
+.tabs {
+  display:flex;gap:9px;overflow-x:auto;
+  padding:12px;margin-bottom:20px;
+  background:#ffffff0c;border:1px solid #ffffff20;
+  border-radius:17px;position:sticky;top:5px;
+  z-index:10;backdrop-filter:blur(18px);
+}
+.tabs button {
+  white-space:nowrap;flex-shrink:0;
+  background:#ffffff12;border:1px solid #ffffff20;
+}
+.tabs button.active {
+  background:linear-gradient(120deg,var(--pink),var(--purple));
+  box-shadow:0 0 20px #e47bff55;
+}
+.panel {
+  display:none;
+  background:var(--panel);
+  border:1px solid #ffffff22;
+  border-radius:22px;padding:clamp(18px,4vw,35px);
+  min-height:380px;backdrop-filter:blur(14px);
+  box-shadow:0 15px 50px #0003;
+  animation:appear .35s ease;
+}
+.panel.active {display:block}
+@keyframes appear {
+  from {opacity:0;transform:translateY(10px)}
+  to {opacity:1;transform:translateY(0)}
+}
+.panel h2 {font-size:clamp(1.5rem,4vw,2.3rem);margin-bottom:15px}
+.panel h3 {margin:18px 0 8px}
+.panel p {line-height:1.7;color:#eee2f7}
+.muted {color:var(--muted)!important}
+.card {
+  padding:17px;border:1px solid #ffffff20;
+  background:#ffffff0c;border-radius:16px;margin:12px 0;
+}
+.grid {
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:13px;margin-top:15px;
+}
+.big-emoji {font-size:clamp(4rem,12vw,8rem);text-align:center;margin:20px}
+.center {text-align:center}
+.result {margin:15px 0;color:#ffd4f0;font-weight:bold}
+.small {font-size:.88rem;color:var(--muted)}
+.gallery img,.gallery video {
+  width:100%;height:190px;object-fit:cover;border-radius:12px;
+  background:#241733;
+}
+.gallery-item {min-width:0}
+.gallery-item p {font-size:.85rem;overflow-wrap:anywhere}
+.progress {height:12px;background:#ffffff22;border-radius:20px;overflow:hidden}
+.progress div {height:100%;width:0;background:linear-gradient(90deg,var(--pink),var(--purple))}
+.music-float {
+  position:fixed;right:17px;bottom:17px;
+  z-index:20;background:#28183c;
+  border:1px solid #ffffff33;border-radius:18px;
+  padding:12px;box-shadow:0 0 25px #d85cff55;
+  width:min(280px,calc(100vw - 34px));
+}
+.music-float button {padding:8px 12px}
+.music-float input {margin:5px 0}
+#musicStatus {font-size:12px;color:#e9d8f6;margin-top:5px}
+.cake {font-size:100px;cursor:pointer;transition:.3s}
+.cake:hover {transform:scale(1.08)}
+.balloon {
+  font-size:48px;cursor:pointer;display:inline-block;
+  padding:7px;transition:.15s;
+}
+.balloon:hover {transform:scale(1.15)}
+.memory-card {
+  font-size:35px;min-height:75px;
+  background:#38234e;border:1px solid #ffffff33;
+}
+.memory-card:disabled {opacity:1;cursor:default}
+.heart-target {font-size:35px;padding:7px;background:transparent}
+#cardCanvas {width:100%;max-width:600px;border-radius:14px;background:#341d49}
+footer {text-align:center;color:#bcaaca;padding:30px 10px}
+body.light {
+  --bg:#fff0f8;--panel:rgba(255,255,255,.8);--text:#43264b;
+  --muted:#705477;
+  background:linear-gradient(135deg,#ffe5f1,#eee4ff);
+}
+body.light .panel {border-color:#d9b5d8}
+body.light .tabs {background:#ffffffaa}
+body.light .tabs button:not(.active) {color:#573b60}
+body.blue {
+  --bg:#07172c;--panel:rgba(40,100,160,.18);
+  --pink:#45c9ff;--purple:#777dff;
+  background:radial-gradient(circle at 20% 20%,#17416b,transparent 40%),#07172c;
+}
+@media(max-width:600px) {
+  header {padding-top:28px}
+  .tabs {top:2px}
+  .panel {padding:18px}
+}
+@media(prefers-reduced-motion:reduce) {
+  *,*::before,*::after {animation:none!important;scroll-behavior:auto!important;transition:none!important}
+}
+</style>
+</head>
+
+<body>
+<canvas id="particleCanvas"></canvas>
+
+<header>
+  <h1>Happy Birthday, My Bachu! 💗</h1>
+  <p>A little universe made with love, happiness and countless memories ✨</p>
+  <p>Today is all about YOU! 🎂</p>
+</header>
+
+<div class="app">
+<nav class="tabs" id="tabs">
+  <button class="active" data-tab="home">🏠 Home</button>
+  <button data-tab="music">🎵 Music</button>
+  <button data-tab="letter">💌 Letter</button>
+  <button data-tab="cake">🎂 Cake</button>
+  <button data-tab="candles">🕯️ Candles</button>
+  <button data-tab="balloons">🎈 Balloons</button>
+  <button data-tab="memory">🧠 Memory Game</button>
+  <button data-tab="hearts">💗 Catch Hearts</button>
+  <button data-tab="quiz">❓ Quiz</button>
+  <button data-tab="gallery">📸 Gallery</button>
+  <button data-tab="videos">🎬 Videos</button>
+  <button data-tab="gifts">🎁 Gifts</button>
+  <button data-tab="jar">✨ Memory Jar</button>
+  <button data-tab="wishes">🌷 Wishes</button>
+  <button data-tab="timeline">⏳ Timeline</button>
+  <button data-tab="card">💝 Card Maker</button>
+  <button data-tab="buddy">🐻 Buddy</button>
+  <button data-tab="challenges">🏆 Challenges</button>
+  <button data-tab="scrapbook">📖 Scrapbook</button>
+  <button data-tab="riddle">🧩 Riddle</button>
+  <button data-tab="wheel">🎡 Lucky Wheel</button>
+  <button data-tab="compliments">🌸 Compliments</button>
+  <button data-tab="notes">🔐 Secret Notes</button>
+  <button data-tab="themes">🎨 Themes</button>
+  <button data-tab="fireworks">🎆 Fireworks</button>
+</nav>
+
+<!-- 1 HOME -->
+<section class="panel active" id="home">
+  <h2>Welcome to your birthday universe! 🌌</h2>
+  <div class="big-emoji">🎂💗🎀</div>
+  <div class="center">
+    <h3>For my favourite person</h3>
+    <p>May your day be full of smiles, surprises, laughter and beautiful memories.</p>
+    <h3>Birthday Countdown</h3>
+    <input type="datetime-local" id="birthdayDate">
+    <button onclick="countdown()">Start Countdown</button>
+    <div class="result" id="countdownResult">Set the birthday date above! 💗</div>
+    <button onclick="showTab('letter')">Open Your Birthday Letter 💌</button>
+  </div>
+</section>
+
+<!-- 2 MUSIC -->
+<section class="panel" id="music">
+  <h2>🎵 Your Birthday Soundtrack</h2>
+  <div class="big-emoji">🎧💗</div>
+  <p>Press play and let the birthday music fill this little universe.</p>
+  <audio id="birthdayAudio" loop preload="none"
+    src="https://cdn.pixabay.com/audio/2022/10/25/audio_946b4c5f1c.mp3"></audio>
+  <div class="card center">
+    <h3>Birthday Background Music</h3>
+    <button onclick="toggleMusic()">▶ Play / Pause Music</button>
+    <label>Volume</label>
+    <input type="range" min="0" max="1" step=".01" value=".4" id="volumeControl">
+    <p id="musicMessage" class="result">If music doesn't start automatically, press Play.</p>
+  </div>
+</section>
+
+<!-- 3 LETTER -->
+<section class="panel" id="letter">
+  <h2>💌 A Birthday Letter For You</h2>
+  <div class="card">
+    <p>
+      Happy Birthday, my Bachu! 💗🎂
+      <br><br>
+      Today is a very special day because the world gets to celebrate someone
+      who deserves so much happiness. I hope this new year of your life brings
+      you beautiful opportunities, peaceful days, exciting adventures and
+      countless reasons to smile.
+      <br><br>
+      I hope you never forget how special your dreams are. Keep believing in
+      yourself, keep learning, keep exploring and keep doing the things that
+      make your heart happy. Even the smallest achievements deserve to be
+      celebrated, and every step forward is worth being proud of.
+      <br><br>
+      May your mornings begin with hope, your afternoons bring new adventures
+      and your nights end with peaceful thoughts. May you meet kind people,
+      discover wonderful places and collect memories that make you smile years
+      from now.
+      <br><br>
+      I hope every candle on your cake represents a beautiful wish. I hope
+      every birthday surprise reminds you that you deserve kindness. And I
+      hope every little moment today makes you feel appreciated.
+      <br><br>
+      Never stop being curious. Never stop laughing at silly things. Never
+      stop making plans for the future. You have so many wonderful chapters
+      waiting ahead, and I hope this year becomes one of your favourite ones.
+      <br><br>
+      When life feels busy, remember to take a break and enjoy the little
+      things: your favourite song, a beautiful sunset, a delicious treat,
+      a funny conversation or a peaceful moment.
+      <br><br>
+      May your favourite songs sound even better, your favourite food taste
+      even sweeter and your happiest memories become even more precious.
+      I wish you confidence when you face something new, patience when things
+      take time and courage when you follow your dreams.
+      <br><br>
+      Thank you for being a wonderful part of this little story. I hope this
+      website makes you smile and reminds you that today is your day.
+      <br><br>
+      So make a wish, enjoy your cake, open your surprises and have the
+      loveliest birthday ever!
+      <br><br>
+      Happy Birthday, Bachu! 🎀🌷💗
+      <br><br>
+      With lots of birthday wishes and happiness,
+      <br>
+      Someone who wishes you the best ✨
+    </p>
+  </div>
+</section>
+
+<!-- 4 CAKE -->
+<section class="panel" id="cake">
+  <h2>🎂 Interactive Birthday Cake</h2>
+  <p>Tap the cake to make a wish and celebrate!</p>
+  <div class="center">
+    <div class="cake" id="cakeEmoji" onclick="cakeClick()">🎂</div>
+    <div class="result" id="cakeMessage">Your birthday cake is waiting!</div>
+    <button onclick="cakeReset()">Reset Cake</button>
+  </div>
+</section>
+
+<!-- 5 CANDLES -->
+<section class="panel" id="candles">
+  <h2>🕯️ Make A Birthday Wish</h2>
+  <div class="big-emoji" id="candleDisplay">🕯️🕯️🕯️🕯️🕯️</div>
+  <div class="center">
+    <p>Tap the button to blow out the candles!</p>
+    <button onclick="blowCandles()">💨 Blow Out Candles</button>
+    <div class="result" id="candleMessage">Make a wish first! ✨</div>
+    <button onclick="resetCandles()">Light Again</button>
+  </div>
+</section>
+
+<!-- 6 BALLOONS -->
+<section class="panel" id="balloons">
+  <h2>🎈 Balloon Pop Challenge</h2>
+  <p>Pop all the balloons and discover the birthday surprise!</p>
+  <div class="result" id="balloonScore">Popped: 0 / 12</div>
+  <div id="balloonArea" class="grid"></div>
+  <button onclick="startBalloons()">Restart Balloon Game</button>
+</section>
+
+<!-- 7 MEMORY -->
+<section class="panel" id="memory">
+  <h2>🧠 Memory Match Game</h2>
+  <p>Find all six matching pairs.</p>
+  <div class="result" id="memoryStatus">Moves: 0 | Matches: 0</div>
+  <div class="grid" id="memoryGrid"></div>
+  <button onclick="startMemory()">Restart Game</button>
+</section>
+
+<!-- 8 HEARTS -->
+<section class="panel" id="hearts">
+  <h2>💗 Catch The Hearts</h2>
+  <p>Click as many hearts as you can in 15 seconds!</p>
+  <div class="center">
+    <div class="result" id="heartScore">Score: 0</div>
+    <div class="result" id="heartTimer">Time: 15</div>
+    <button onclick="startHearts()">Start Heart Game</button>
+    <div id="heartArea" class="grid"></div>
+  </div>
+</section>
+
+<!-- 9 QUIZ -->
+<section class="panel" id="quiz">
+  <h2>❓ Birthday Quiz</h2>
+  <div id="quizContent"></div>
+  <div class="result" id="quizResult"></div>
+  <button onclick="startQuiz()">Restart Quiz</button>
+</section>
+
+<!-- 10 GALLERY -->
+<section class="panel" id="gallery">
+  <h2>📸 Your Photo Gallery</h2>
+  <p>Choose photos from your device to make your own gallery.</p>
+  <input type="file" id="photoInput" accept="image/*" multiple>
+  <div class="grid gallery" id="photoGallery"></div>
+  <p class="small">Photos are displayed in this browser. They are not uploaded to the website server.</p>
+</section>
+
+<!-- 11 VIDEOS -->
+<section class="panel" id="videos">
+  <h2>🎬 Birthday Video Gallery</h2>
+  <p>Paste a YouTube video link to add it to the gallery.</p>
+  <input id="videoUrl" placeholder="Paste YouTube video URL">
+  <button onclick="addVideo()">Add Video</button>
+  <div class="grid gallery" id="videoGallery"></div>
+</section>
+
+<!-- 12 GIFTS -->
+<section class="panel" id="gifts">
+  <h2>🎁 Open Your Birthday Gifts</h2>
+  <p>Choose a gift box. Each one has a little surprise!</p>
+  <div class="grid">
+    <button onclick="openGift(0)">🎁 Gift One</button>
+    <button onclick="openGift(1)">🎀 Gift Two</button>
+    <button onclick="openGift(2)">💝 Gift Three</button>
+    <button onclick="openGift(3)">✨ Gift Four</button>
+  </div>
+  <div class="result center" id="giftMessage">Choose a gift to open it!</div>
+</section>
+
+<!-- 13 JAR -->
+<section class="panel" id="jar">
+  <h2>✨ The Little Memory Jar</h2>
+  <p>Write a happy memory or something you want to remember.</p>
+  <textarea id="jarInput" placeholder="Write a lovely memory..."></textarea>
+  <button onclick="saveJar()">Put Memory In Jar</button>
+  <div id="jarList"></div>
+</section>
+
+<!-- 14 WISHES -->
+<section class="panel" id="wishes">
+  <h2>🌷 Birthday Wish Maker</h2>
+  <p>Write a wish for the year ahead.</p>
+  <textarea id="wishInput" placeholder="My wish for you is..."></textarea>
+  <button onclick="saveWish()">Save My Wish</button>
+  <div id="wishList"></div>
+</section>
+
+<!-- 15 TIMELINE -->
+<section class="panel" id="timeline">
+  <h2>⏳ Beautiful Moments Timeline</h2>
+  <p>Add moments you want to remember.</p>
+  <input id="timelineTitle" placeholder="Moment title">
+  <input id="timelineDate" type="date">
+  <textarea id="timelineText" placeholder="What happened?"></textarea>
+  <button onclick="addTimeline()">Add Moment</button>
+  <div id="timelineList"></div>
+</section>
+
+<!-- 16 CARD -->
+<section class="panel" id="card">
+  <h2>💝 Make A Birthday Card</h2>
+  <input id="cardName" value="My Bachu" placeholder="Name">
+  <input id="cardMessage" value="Wishing you the happiest birthday ever!" placeholder="Your message">
+  <button onclick="drawCard()">Create Card</button>
+  <div class="center">
+    <canvas id="cardCanvas" width="600" height="360"></canvas>
+    <br><br>
+    <button onclick="downloadCard()">Download Card PNG</button>
+  </div>
+</section>
+
+<!-- 17 BUDDY -->
+<section class="panel" id="buddy">
+  <h2>🐻 Build Your Birthday Buddy</h2>
+  <p>Choose a little character and decorate it.</p>
+  <div class="center">
+    <div class="big-emoji" id="buddyCharacter">🐻🎀</div>
+    <select id="buddyAnimal" onchange="updateBuddy()">
+      <option value="🐻">Bear</option>
+      <option value="🐰">Rabbit</option>
+      <option value="🐱">Cat</option>
+      <option value="🐼">Panda</option>
+      <option value="🦊">Fox</option>
+      <option value="🐸">Frog</option>
+    </select>
+    <select id="buddyAccessory" onchange="updateBuddy()">
+      <option value="🎀">Ribbon</option>
+      <option value="👑">Crown</option>
+      <option value="🌸">Flower</option>
+      <option value="🕶️">Sunglasses</option>
+      <option value="💗">Heart</option>
+    </select>
+  </div>
+</section>
+
+<!-- 18 CHALLENGES -->
+<section class="panel" id="challenges">
+  <h2>🏆 Birthday Challenge Board</h2>
+  <p>Complete the little birthday challenges!</p>
+  <div class="progress"><div id="challengeProgress"></div></div>
+  <div id="challengeList"></div>
+  <p class="result" id="challengeStatus">0 / 6 completed</p>
+</section>
+
+<!-- 19 SCRAPBOOK -->
+<section class="panel" id="scrapbook">
+  <h2>📖 Birthday Scrapbook</h2>
+  <p>Save a little note in your scrapbook.</p>
+  <textarea id="scrapInput" placeholder="Write something you want to keep..."></textarea>
+  <button onclick="saveScrap()">Add To Scrapbook</button>
+  <button onclick="downloadScrap()">Download Scrapbook</button>
+  <div id="scrapList"></div>
+</section>
+
+<!-- 20 RIDDLE -->
+<section class="panel" id="riddle">
+  <h2>🧩 Birthday Riddle</h2>
+  <div class="card center">
+    <div class="big-emoji">🕰️</div>
+    <h3>I have hands but cannot clap.</h3>
+    <h3>I have a face but cannot smile.</h3>
+    <h3>What am I?</h3>
+    <input id="riddleAnswer" placeholder="Your answer">
+    <button onclick="checkRiddle()">Submit Answer</button>
+    <div class="result" id="riddleResult"></div>
+  </div>
+</section>
+
+<!-- 21 WHEEL -->
+<section class="panel" id="wheel">
+  <h2>🎡 Lucky Birthday Wheel</h2>
+  <div class="center">
+    <div class="big-emoji" id="wheelEmoji">🎡</div>
+    <button onclick="spinWheel()">Spin The Wheel!</button>
+    <div class="result" id="wheelResult">Let's discover your birthday luck!</div>
+  </div>
+</section>
+
+<!-- 22 COMPLIMENTS -->
+<section class="panel" id="compliments">
+  <h2>🌸 A Little Compliment Machine</h2>
+  <div class="center">
+    <div class="big-emoji">🌷</div>
+    <p>Press the button for a little reminder of how wonderful you are.</p>
+    <button onclick="newCompliment()">Give Me A Compliment</button>
+    <div class="result" id="complimentResult"></div>
+  </div>
+</section>
+
+<!-- 23 NOTES -->
+<section class="panel" id="notes">
+  <h2>🔐 Secret Notes</h2>
+  <p>Write a note and save it in this browser.</p>
+  <textarea id="secretInput" placeholder="A little note..."></textarea>
+  <button onclick="saveSecret()">Save Note</button>
+  <div id="secretList"></div>
+  <p class="small">These notes are not encrypted or password-protected. Anyone using this browser may be able to see them.</p>
+</section>
+
+<!-- 24 THEMES -->
+<section class="panel" id="themes">
+  <h2>🎨 Choose Your Website Theme</h2>
+  <p>Change the look of your birthday universe.</p>
+  <div class="grid">
+    <button onclick="setTheme('')">🌌 Original Purple</button>
+    <button onclick="setTheme('light')">🌸 Light Pink</button>
+    <button onclick="setTheme('blue')">🌊 Ocean Blue</button>
+  </div>
+</section>
+
+<!-- 25 FIREWORKS -->
+<section class="panel" id="fireworks">
+  <h2>🎆 Birthday Fireworks Celebration</h2>
+  <div class="center">
+    <div class="big-emoji">🎇🎆✨</div>
+    <p>Ready for a birthday celebration?</p>
+    <button onclick="celebrate()">Launch Fireworks!</button>
+    <div class="result" id="fireworkMessage">Let's make today sparkle!</div>
+  </div>
+</section>
+</div>
+
+<div class="music-float">
+  <div>🎵 <b>Birthday Music</b></div>
+  <button onclick="toggleMusic()">▶ / ⏸</button>
+  <span class="small">Tap to play or pause</span>
+  <input type="range" min="0" max="1" step=".01" value=".4" id="floatVolume">
+  <div id="musicStatus">Music ready 💗</div>
+</div>
+
+<footer>Made with birthday wishes, sparkles and lots of love 💗</footer>
+
+<script>
+/* ---------------- GENERAL TABS ---------------- */
+const tabButtons = document.querySelectorAll(".tabs button");
+const panels = document.querySelectorAll(".panel");
+
+function showTab(id) {
+  panels.forEach(p => p.classList.toggle("active", p.id === id));
+  tabButtons.forEach(b => b.classList.toggle("active", b.dataset.tab === id));
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+tabButtons.forEach(b => b.addEventListener("click", () => showTab(b.dataset.tab)));
+
+/* ---------------- MUSIC ---------------- */
+const audio = document.getElementById("birthdayAudio");
+const musicMessage = document.getElementById("musicMessage");
+audio.volume = .4;
+
+function toggleMusic() {
+  if(audio.paused) {
+    audio.play().then(() => {
+      musicMessage.textContent = "Now playing! Enjoy the music 💗";
+      document.getElementById("musicStatus").textContent = "Playing 🎶";
+    }).catch(() => {
+      musicMessage.textContent = "Music couldn't load. Check the audio link or internet connection.";
+      document.getElementById("musicStatus").textContent = "Couldn't play music";
+    });
+  } else {
+    audio.pause();
+    musicMessage.textContent = "Music paused.";
+    document.getElementById("musicStatus").textContent = "Paused";
+  }
+}
+function setVolume(v) {
+  audio.volume = Number(v);
+}
+document.getElementById("volumeControl").addEventListener("input", e => {
+  setVolume(e.target.value);
+  document.getElementById("floatVolume").value = e.target.value;
+});
+document.getElementById("floatVolume").addEventListener("input", e => {
+  setVolume(e.target.value);
+  document.getElementById("volumeControl").value = e.target.value;
+});
+window.addEventListener("load", () => {
+  audio.play().then(() => {
+    document.getElementById("musicStatus").textContent = "Playing 🎶";
+  }).catch(() => {
+    document.getElementById("musicStatus").textContent = "Press play to start music";
+  });
+});
+
+/* ---------------- COUNTDOWN ---------------- */
+let countdownTimer;
+function countdown() {
+  const value = document.getElementById("birthdayDate").value;
+  if(!value) return alert("Please choose the birthday date!");
+  const target = new Date(value).getTime();
+  clearInterval(countdownTimer);
+  function update() {
+    const diff = target - Date.now();
+    if(diff <= 0) {
+      document.getElementById("countdownResult").textContent = "It's birthday time! 🎂💗";
+      clearInterval(countdownTimer);
+      return;
+    }
+    const days = Math.floor(diff / 86400000);
+    const hours = Math.floor(diff % 86400000 / 3600000);
+    const mins = Math.floor(diff % 3600000 / 60000);
+    const secs = Math.floor(diff % 60000 / 1000);
+    document.getElementById("countdownResult").textContent =
+      `${days} days ${hours} hours ${mins} minutes ${secs} seconds`;
+  }
+  update();
+  countdownTimer = setInterval(update,1000);
+}
+
+/* ---------------- CAKE ---------------- */
+let cakeClicks = 0;
+function cakeClick() {
+  cakeClicks++;
+  const cake = document.getElementById("cakeEmoji");
+  cake.textContent = cakeClicks % 2 ? "🍰" : "🎂";
+  document.getElementById("cakeMessage").textContent =
+    cakeClicks >= 3 ? "Cake party! Make a beautiful wish! 🎉" : "Yummy! One more birthday bite! 💗";
+}
+function cakeReset() {
+  cakeClicks = 0;
+  document.getElementById("cakeEmoji").textContent = "🎂";
+  document.getElementById("cakeMessage").textContent = "Your birthday cake is waiting!";
+}
+
+/* ---------------- CANDLES ---------------- */
+function blowCandles() {
+  document.getElementById("candleDisplay").textContent = "💨✨🌟";
+  document.getElementById("candleMessage").textContent = "Wish sent to the universe! 💗";
+}
+function resetCandles() {
+  document.getElementById("candleDisplay").textContent = "🕯️🕯️🕯️🕯️🕯️";
+  document.getElementById("candleMessage").textContent = "Candles are glowing again!";
+}
+
+/* ---------------- BALLOONS ---------------- */
+let popped = 0;
+function startBalloons() {
+  popped = 0;
+  const area = document.getElementById("balloonArea");
+  area.innerHTML = "";
+  document.getElementById("balloonScore").textContent = "Popped: 0 / 12";
+  for(let i=0;i<12;i++) {
+    const b = document.createElement("button");
+    b.className = "balloon";
+    b.textContent = ["🎈","🎈","🎈","🎈","🎈","🎈"][i%6];
+    b.style.background = "transparent";
+    b.onclick = () => {
+      if(b.disabled) return;
+      b.disabled = true;
+      b.textContent = "💥";
+      popped++;
+      document.getElementById("balloonScore").textContent = `Popped: ${popped} / 12`;
+      if(popped === 12) document.getElementById("balloonScore").textContent = "You did it! Happy Birthday! 🎉💗";
+    };
+    area.appendChild(b);
+  }
+}
+startBalloons();
+
+/* ---------------- MEMORY MATCH ---------------- */
+const memorySymbols = ["🎂","🎀","🎁","🌸","💗","⭐"];
+let firstCard = null, lockMemory = false, moves = 0, matches = 0;
+function startMemory() {
+  firstCard = null; lockMemory = false; moves = 0; matches = 0;
+  const cards = [...memorySymbols,...memorySymbols].sort(() => Math.random()-.5);
+  const grid = document.getElementById("memoryGrid");
+  grid.innerHTML = "";
+  document.getElementById("memoryStatus").textContent = "Moves: 0 | Matches: 0";
+  cards.forEach(symbol => {
+    const b = document.createElement("button");
+    b.className = "memory-card";
+    b.textContent = "❔";
+    b.dataset.symbol = symbol;
+    b.onclick = () => flipCard(b);
+    grid.appendChild(b);
+  });
+}
+function flipCard(card) {
+  if(lockMemory || card.disabled || card === firstCard) return;
+  card.textContent = card.dataset.symbol;
+  if(!firstCard) { firstCard = card; return; }
+  moves++;
+  if(firstCard.dataset.symbol === card.dataset.symbol) {
+    firstCard.disabled = true; card.disabled = true;
+    firstCard = null; matches++;
+    updateMemoryStatus();
+  } else {
+    lockMemory = true;
+    const old = firstCard;
+    firstCard = null;
+    setTimeout(() => {
+      old.textContent = "❔"; card.textContent = "❔";
+      lockMemory = false;
+    },750);
+  }
+  updateMemoryStatus();
+}
+function updateMemoryStatus() {
+  document.getElementById("memoryStatus").textContent =
+    `Moves: ${moves} | Matches: ${matches}`;
+  if(matches === 6) document.getElementById("memoryStatus").textContent += " — You won! 🏆";
+}
+startMemory();
+
+/* ---------------- CATCH HEARTS ---------------- */
+let heartPoints = 0, heartSeconds = 15, heartInterval;
+function startHearts() {
+  clearInterval(heartInterval);
+  heartPoints = 0; heartSeconds = 15;
+  document.getElementById("heartArea").innerHTML = "";
+  updateHeartScore();
+  heartInterval = setInterval(() => {
+    heartSeconds--;
+    updateHeartScore();
+    if(heartSeconds <= 0) {
+      clearInterval(heartInterval);
+      document.getElementById("heartArea").innerHTML = "";
+      document.getElementById("heartTimer").textContent = "Time's up!";
+    }
+  },1000);
+  const area = document.getElementById("heartArea");
+  for(let i=0;i<12;i++) {
+    const b = document.createElement("button");
+    b.className = "heart-target";
+    b.textContent = "💗";
+    b.onclick = () => {
+      if(heartSeconds <= 0 || b.disabled) return;
+      b.disabled = true; b.textContent = "✨";
+      heartPoints++;
+      updateHeartScore();
+    };
+    area.appendChild(b);
+  }
+}
+function updateHeartScore() {
+  document.getElementById("heartScore").textContent = "Score: " + heartPoints;
+  document.getElementById("heartTimer").textContent = "Time: " + heartSeconds;
+}
+
+/* ---------------- QUIZ ---------------- */
+const quizQuestions = [
+  {q:"What do we celebrate on a birthday?",a:["A new year of life","A Monday","A rainy day"],correct:0},
+  {q:"What is usually on a birthday cake?",a:["Candles","Shoes","A phone"],correct:0},
+  {q:"What do people make before blowing candles?",a:["A wish","A sandwich","A map"],correct:0},
+  {q:"Which emoji is perfect for a birthday?",a:["🎂","🚦","🧱"],correct:0}
+];
+let quizIndex = 0, quizPoints = 0;
+function startQuiz() {
+  quizIndex = 0; quizPoints = 0; renderQuiz();
+  document.getElementById("quizResult").textContent = "";
+}
+function renderQuiz() {
+  const q = quizQuestions[quizIndex];
+  if(!q) {
+    document.getElementById("quizContent").innerHTML = "<h3>Quiz complete! 🎉</h3>";
+    document.getElementById("quizResult").textContent = `Your score: ${quizPoints} / ${quizQuestions.length}`;
+    return;
+  }
+  document.getElementById("quizContent").innerHTML =
+    `<h3>${quizIndex+1}. ${q.q}</h3>` +
+    q.a.map((a,i) => `<button style="margin:6px" onclick="answerQuiz(${i})">${a}</button>`).join("");
+}
+function answerQuiz(index) {
+  if(index === quizQuestions[quizIndex].correct) quizPoints++;
+  quizIndex++;
+  renderQuiz();
+}
+startQuiz();
+
+/* ---------------- PHOTO GALLERY ---------------- */
+document.getElementById("photoInput").addEventListener("change",e => {
+  const gallery = document.getElementById("photoGallery");
+  [...e.target.files].forEach(file => {
+    if(!file.type.startsWith("image/")) return;
+    const url = URL.createObjectURL(file);
+    const item = document.createElement("div");
+    item.className = "gallery-item";
+    const img = document.createElement("img");
+    img.src = url; img.alt = "Birthday memory";
+    item.appendChild(img);
+    gallery.appendChild(item);
+  });
+});
+
+/* ---------------- VIDEO GALLERY ---------------- */
+function addVideo() {
+  const raw = document.getElementById("videoUrl").value.trim();
+  let id = "";
+  try {
+    const url = new URL(raw);
+    if(url.hostname.includes("youtu.be")) id = url.pathname.slice(1);
+    else if(url.hostname.includes("youtube.com")) id = url.searchParams.get("v") || "";
+    if(id && !/^[a-zA-Z0-9_-]{11}$/.test(id)) id = "";
+  } catch(e) {}
+  if(!id) return alert("Please enter a valid YouTube video link.");
+  const frame = document.createElement("iframe");
+  frame.src = "https://www.youtube-nocookie.com/embed/" + id;
+  frame.title = "Birthday video";
+  frame.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+  frame.allowFullscreen = true;
+  frame.style.width = "100%";
+  frame.style.aspectRatio = "16 / 9";
+  frame.style.border = "0";
+  frame.style.borderRadius = "12px";
+  const item = document.createElement("div");
+  item.className = "gallery-item";
+  item.appendChild(frame);
+  document.getElementById("videoGallery").appendChild(item);
+  document.getElementById("videoUrl").value = "";
+}
+
+/* ---------------- GIFTS ---------------- */
+const gifts = [
+  "A year full of happiness and wonderful surprises! 🌷",
+  "A pocket full of confidence for every new adventure! ⭐",
+  "A lifetime supply of laughter and good memories! 💗",
+  "A little reminder to always believe in your dreams! 🎀"
+];
+function openGift(i) {
+  document.getElementById("giftMessage").textContent = gifts[i];
+}
+
+/* ---------------- LOCAL STORAGE HELPERS ---------------- */
+function getSaved(key) {
+  try { return JSON.parse(localStorage.getItem(key) || "[]"); }
+  catch(e) { return []; }
+}
+function saveSaved(key,arr) {
+  localStorage.setItem(key,JSON.stringify(arr));
+}
+function addTextItem(container,text) {
+  const div = document.createElement("div");
+  div.className = "card";
+  div.textContent = text;
+  document.getElementById(container).prepend(div);
+}
+
+/* ---------------- MEMORY JAR ---------------- */
+function renderJar() {
+  document.getElementById("jarList").innerHTML = "";
+  getSaved("bachuJar").forEach(t => addTextItem("jarList","✨ " + t));
+}
+function saveJar() {
+  const value = document.getElementById("jarInput").value.trim();
+  if(!value) return;
+  const a = getSaved("bachuJar"); a.push(value); saveSaved("bachuJar",a);
+  document.getElementById("jarInput").value = ""; renderJar();
+}
+
+/* ---------------- WISHES ---------------- */
+function renderWishes() {
+  document.getElementById("wishList").innerHTML = "";
+  getSaved("bachuWishes").forEach(t => addTextItem("wishList","🌷 " + t));
+}
+function saveWish() {
+  const value = document.getElementById("wishInput").value.trim();
+  if(!value) return;
+  const a = getSaved("bachuWishes"); a.push(value); saveSaved("bachuWishes",a);
+  document.getElementById("wishInput").value = ""; renderWishes();
+}
+
+/* ---------------- TIMELINE ---------------- */
+function renderTimeline() {
+  document.getElementById("timelineList").innerHTML = "";
+  getSaved("bachuTimeline").forEach(t =>
+    addTextItem("timelineList",`⏳ ${t.date || "A special day"} — ${t.title}: ${t.text}`));
+}
+function addTimeline() {
+  const title = document.getElementById("timelineTitle").value.trim();
+  const text = document.getElementById("timelineText").value.trim();
+  const date = document.getElementById("timelineDate").value;
+  if(!title || !text) return alert("Please add a title and description.");
+  const a = getSaved("bachuTimeline"); a.push({title,text,date});
+  saveSaved("bachuTimeline",a);
+  document.getElementById("timelineTitle").value = "";
+  document.getElementById("timelineText").value = "";
+  renderTimeline();
+}
+
+/* ---------------- BIRTHDAY CARD ---------------- */
+function drawCard() {
+  const canvas = document.getElementById("cardCanvas");
+  const ctx = canvas.getContext("2d");
+  const gradient = ctx.createLinearGradient(0,0,600,360);
+  gradient.addColorStop(0,"#612c70");
+  gradient.addColorStop(1,"#d85a9f");
+  ctx.fillStyle = gradient; ctx.fillRect(0,0,600,360);
+  ctx.textAlign = "center";
+  ctx.fillStyle = "#fff";
+  ctx.font = "50px Segoe UI"; ctx.fillText("🎂",300,110);
+  ctx.font = "bold 36px Segoe UI";
+  ctx.fillText("Happy Birthday!",300,180);
+  ctx.font = "27px Segoe UI";
+  ctx.fillText(document.getElementById("cardName").value.slice(0,28),300,230);
+  ctx.font = "18px Segoe UI";
+  ctx.fillText(document.getElementById("cardMessage").value.slice(0,55),300,280);
+  ctx.font = "22px Segoe UI"; ctx.fillText("💗 ✨ 🎀",300,325);
+}
+function downloadCard() {
+  drawCard();
+  const a = document.createElement("a");
+  a.download = "bachu-birthday-card.png";
+  a.href = document.getElementById("cardCanvas").toDataURL("image/png");
+  a.click();
+}
+drawCard();
+
+/* ---------------- BUDDY ---------------- */
+function updateBuddy() {
+  document.getElementById("buddyCharacter").textContent =
+    document.getElementById("buddyAnimal").value +
+    document.getElementById("buddyAccessory").value;
+}
+
+/* ---------------- CHALLENGES ---------------- */
+const challenges = [
+  "Make a birthday wish 🌟",
+  "Enjoy a favourite treat 🍰",
+  "Listen to a favourite song 🎵",
+  "Take a happy photo 📸",
+  "Play a birthday game 🎮",
+  "Smile for no reason 💗"
+];
+function renderChallenges() {
+  const done = getSaved("bachuChallenges");
+  const list = document.getElementById("challengeList");
+  list.innerHTML = "";
+  challenges.forEach((c,i) => {
+    const label = document.createElement("label");
+    label.style.display = "block"; label.style.margin = "13px 0";
+    const input = document.createElement("input");
+    input.type = "checkbox"; input.style.width = "auto";
+    input.checked = done.includes(i);
+    input.addEventListener("change",() => {
+      let arr = getSaved("bachuChallenges");
+      if(input.checked && !arr.includes(i)) arr.push(i);
+      if(!input.checked) arr = arr.filter(x => x !== i);
+      saveSaved("bachuChallenges",arr); renderChallenges();
+    });
+    label.append(input,document.createTextNode(" " + c));
+    list.appendChild(label);
+  });
+  const count = done.length;
+  document.getElementById("challengeProgress").style.width = (count/6*100)+"%";
+  document.getElementById("challengeStatus").textContent = `${count} / 6 completed`;
+}
+
+/* ---------------- SCRAPBOOK ---------------- */
+function renderScrap() {
+  document.getElementById("scrapList").innerHTML = "";
+  getSaved("bachuScrap").forEach(t => addTextItem("scrapList","📖 " + t));
+}
+function saveScrap() {
+  const v = document.getElementById("scrapInput").value.trim();
+  if(!v) return;
+  const a = getSaved("bachuScrap"); a.push(v); saveSaved("bachuScrap",a);
+  document.getElementById("scrapInput").value = ""; renderScrap();
+}
+function downloadScrap() {
+  const text = getSaved("bachuScrap").join("\n\n");
+  const blob = new Blob([text],{type:"text/plain"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url; a.download = "bachu-scrapbook.txt"; a.click();
+  URL.revokeObjectURL(url);
+}
+
+/* ---------------- RIDDLE ---------------- */
+function checkRiddle() {
+  const answer = document.getElementById("riddleAnswer").value.trim().toLowerCase();
+  document.getElementById("riddleResult").textContent =
+    answer.includes("clock") ? "Correct! You're a riddle champion! 🏆" :
+    "Not quite! Hint: It tells you the time. 🕰️";
+}
+
+/* ---------------- LUCKY WHEEL ---------------- */
+const wheelPrizes = [
+  "A day full of smiles! 😊","A surprise treat! 🍰",
+  "A lucky year ahead! ⭐","A big birthday hug from everyone! 💗",
+  "A wonderful adventure! 🌈","A wish coming true! ✨"
+];
+function spinWheel() {
+  const emoji = document.getElementById("wheelEmoji");
+  emoji.animate([{transform:"rotate(0deg)"},{transform:"rotate(1080deg)"}],
+    {duration:1300,easing:"ease-out"});
+  document.getElementById("wheelResult").textContent = "Spinning...";
+  setTimeout(() => {
+    document.getElementById("wheelResult").textContent =
+      wheelPrizes[Math.floor(Math.random()*wheelPrizes.length)];
+  },1300);
+}
+
+/* ---------------- COMPLIMENTS ---------------- */
+const compliments = [
+  "Your smile can brighten an ordinary day. 🌸",
+  "Your dreams deserve a chance to grow. 🌱",
+  "You bring your own special sparkle to the world. ✨",
+  "Your kindness can make a real difference. 💗",
+  "You deserve to celebrate every little achievement. 🎀",
+  "Your ideas and imagination make life more interesting. 🌈",
+  "You make ordinary moments feel memorable. ⭐"
+];
+function newCompliment() {
+  document.getElementById("complimentResult").textContent =
+    compliments[Math.floor(Math.random()*compliments.length)];
+}
+
+/* ---------------- SECRET NOTES ---------------- */
+function renderSecrets() {
+  document.getElementById("secretList").innerHTML = "";
+  getSaved("bachuSecrets").forEach(t => addTextItem("secretList","💌 " + t));
+}
+function saveSecret() {
+  const v = document.getElementById("secretInput").value.trim();
+  if(!v) return;
+  const a = getSaved("bachuSecrets"); a.push(v); saveSaved("bachuSecrets",a);
+  document.getElementById("secretInput").value = ""; renderSecrets();
+}
+
+/* ---------------- THEMES ---------------- */
+function setTheme(theme) {
+  document.body.classList.remove("light","blue");
+  if(theme) document.body.classList.add(theme);
+  localStorage.setItem("bachuTheme",theme);
+}
+
+/* ---------------- FIREWORKS / CONFETTI ---------------- */
+function celebrate() {
+  document.getElementById("fireworkMessage").textContent =
+    "Happy Birthday! Let the celebration begin! 🎉💗";
+  for(let i=0;i<100;i++) {
+    const el = document.createElement("div");
+    el.textContent = ["✨","💗","🎉","⭐","🎊"][Math.floor(Math.random()*5)];
+    el.style.position = "fixed";
+    el.style.left = Math.random()*100+"vw";
+    el.style.top = "-30px";
+    el.style.zIndex = "30";
+    el.style.pointerEvents = "none";
+    el.style.fontSize = (16+Math.random()*20)+"px";
+    document.body.appendChild(el);
+    const x = (Math.random()-.5)*300;
+    const y = 300+Math.random()*500;
+    const animation = el.animate([
+      {transform:"translate(0,0) rotate(0deg)",opacity:1},
+      {transform:`translate(${x}px,${y}px) rotate(${Math.random()*600}deg)`,opacity:0}
+    ],{duration:1500+Math.random()*1300,easing:"ease-out"});
+    animation.onfinish = () => el.remove();
+  }
+}
+
+/* ---------------- PARTICLE BACKGROUND ---------------- */
+const canvas = document.getElementById("particleCanvas");
+const ctx = canvas.getContext("2d");
+let particles = [];
+function resizeCanvas() {
+  const dpr = Math.min(window.devicePixelRatio || 1,2);
+  canvas.width = innerWidth*dpr;
+  canvas.height = innerHeight*dpr;
+  canvas.style.width = innerWidth+"px";
+  canvas.style.height = innerHeight+"px";
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+}
+function createParticles() {
+  particles = [];
+  const count = Math.min(65,Math.floor(innerWidth/18));
+  for(let i=0;i<count;i++) {
+    particles.push({
+      x:Math.random()*innerWidth,
+      y:Math.random()*innerHeight,
+      r:1+Math.random()*2.5,
+      speed:.2+Math.random()*.7,
+      drift:(Math.random()-.5)*.4
+    });
+  }
+}
+function animateParticles() {
+  ctx.clearRect(0,0,innerWidth,innerHeight);
+  particles.forEach(p => {
+    p.y -= p.speed;
+    p.x += p.drift;
+    if(p.y < -10) {p.y=innerHeight+10;p.x=Math.random()*innerWidth;}
+    if(p.x < 0) p.x=innerWidth;
+    if(p.x > innerWidth) p.x=0;
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fillStyle = "rgba(255,190,245,.7)";
+    ctx.fill();
+  });
+  requestAnimationFrame(animateParticles);
+}
+resizeCanvas(); createParticles(); animateParticles();
+window.addEventListener("resize",() => {resizeCanvas();createParticles();});
+
+/* ---------------- LOAD SAVED CONTENT ---------------- */
+renderJar();
+renderWishes();
+renderTimeline();
+renderChallenges();
+renderScrap();
+renderSecrets();
+const savedTheme = localStorage.getItem("bachuTheme");
+if(savedTheme) setTheme(savedTheme);
+</script>
+</body>
+</html>
